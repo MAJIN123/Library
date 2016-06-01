@@ -92,19 +92,9 @@ class Book extends CI_Controller
     public function ajax_update_book()
     {
         $data=array(
-            'ISBN'=>$this->input->post('number'),
-            'collections'=>$this->input->post('collection')
+            'ISBN'=>$this->input->post('ISBN'),
+            'collections'=>$this->input->post('collections')
             ); 
-        if($this->input->post('number')==null)
-        {
-            echo json_encode(array("error"=>'number为空!'));
-            exit();
-        }
-        if($this->input->post('collection')==null)
-        {
-            echo json_encode(array("error"=>'collections为空!'));
-            exit();
-        }
         $update=$this->book_model->update($data);
 		echo json_encode(array("status"=>TRUE));
     }

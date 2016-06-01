@@ -62,16 +62,16 @@
 			<!--dirty-->
 			<div class="form-group">
 				<label>ISBN</label>
-				<input name="number" type="text" class="form-control" placeholder="ISBN">
+				<input name="ISBN" type="text" class="form-control" placeholder="ISBN">
 			</div>
 			<div class="form-group">
 				<label>书名</label>
-				<input name="name" type="text" class="form-control" placeholder="书名">
+				<input name="book_name" type="text" class="form-control" placeholder="书名">
 			</div>
 			<div class="form-group">
 				<label>藏量 </label>
 				<span class="tb-stock" id="J_Stock">
-				<input name="collection" type="text" style="width:70px;height:34px;text-align:center" class="tb-text" maxlength="8" placeholder="藏量"> 件
+				<input name="collections" type="text" style="width:70px;height:34px;text-align:center" class="tb-text" maxlength="8" placeholder="藏量"> 件
 				</span>
 				<!--<div class="input-group spinner" data-trigger="spinner" id="spinner">
 					<input type="text" class="form-control" value="1" data-max="10" data-min="1" data-step="1">
@@ -125,7 +125,7 @@
 <!-- DataTables -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>AdminLTE2/plugins/bootstrap-spinner/jquery.spinner.min.js"></script>
+<!--<script src="<?php echo base_url();?>AdminLTE2/plugins/bootstrap-spinner/jquery.spinner.min.js"></script>-->
 <script>	
 var save_method;
 var table;
@@ -197,12 +197,12 @@ function edit_book(ISBN)
 	success:function(data)
 	{
 		var diff=data.collections-data.remaining_number;
-		$('[name="number"]').val(data.ISBN);
-		$('[name="number"]').attr("readonly",true);
-		$('[name="name"]').val(data.book_name);
-		$('[name="name"]').attr("readonly",true);
-		$('[name="collection"]').val(data.collections);	
-		$('[name="collection"]').keypress(
+		$('[name="ISBN"]').val(data.ISBN);
+		$('[name="ISBN"]').attr("readonly",true);
+		$('[name="book_name"]').val(data.book_name);
+		$('[name="book_name"]').attr("readonly",true);
+		$('[name="collections"]').val(data.collections);	
+		$('[name="collections"]').keypress(
 			function(key) 
 			{
 				var keyCode=key.keyCode?key.keyCode:key.charCode;

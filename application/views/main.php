@@ -50,6 +50,12 @@
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg" style="font-size:25px;font-family:kaiTi"><b>图书馆管理系统</b></span>
         </a>
+        <?php 
+        if($this->session->userdata('sex')=='男')
+            $img='AdminLTE2/dist/img/user2-160x160.jpg';
+        else if($this->session->userdata('sex')=='女')
+            $img='AdminLTE2/dist/img/user4-128x128.jpg'
+        ?>
         <!-- Header Navbar-->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -61,16 +67,16 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">    
-                  <img src="<?php echo base_url();?>AdminLTE2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="<?php echo base_url()."".$img;?>" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $this->session->userdata('name') ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="<?php echo base_url();?>AdminLTE2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->userdata('name') ?>
-                      <small><?php echo date("Y年m月d日 H:i:s") ?></small>
+                      <small><?php date_default_timezone_set('PRC');echo date("Y年m月d日 H:i:s") ?></small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -100,7 +106,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="<?php echo base_url();?>AdminLTE2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('name') ?></p>
@@ -128,12 +134,13 @@
                 <!--<span class="label label-primary pull-right">4</span>-->
               </a>
             </li>
-            <li>
+            <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
                 <i class="glyphicon glyphicon-bookmark"></i> <span>还书</span> 
                 <!--<small class="label pull-right bg-green">Hot</small>-->
               </a>
             </li>
+            <?php if($this->session->userdata('permissionId')==1): ?>
             <li class="treeview">
               <a href="<?php echo site_url('menu/book_management') ?>">
                 <i class="glyphicon glyphicon-tasks"></i>
@@ -146,6 +153,7 @@
                 <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
+            <?php endif ?>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
                 <i class="glyphicon glyphicon-list"></i> <span>借书记录</span>
@@ -153,13 +161,13 @@
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url();?>AdminLTE2/calendar.html">
+              <a href="<?php echo site_url('menu') ?>">
                 <i class="glyphicon glyphicon-remove-sign"></i> <span>罚款规则</span>
                 <!--<small class="label pull-right bg-red">3</small>-->
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url();?>AdminLTE2/mailbox/mailbox.html">
+              <a href="<?php echo site_url('menu') ?>">
                 <i class="glyphicon glyphicon-comment"></i> <span>读者评论</span>
                 <!--<small class="label pull-right bg-yellow">12</small>-->
               </a>

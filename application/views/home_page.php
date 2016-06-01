@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Bootstrap 实例 - 简单的轮播（Carousel）插件</title>
    <link href="<?php echo base_url();?>AdminLTE2/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="<?php echo base_url();?>AdminLTE2/scripts/jquery/2.0.0/jquery.min.js"></script>
    <script src="<?php echo base_url();?>AdminLTE2/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide right" style="width:256px;">
    <!-- 轮播（Carousel）指标 -->
    <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
