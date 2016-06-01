@@ -52,7 +52,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel"></h4>
       </div>
-	  <form id="form" role="form" action="#">
+	  <form id="edit" role="form" action="#">
 		<div class="modal-body">
 			<style type="text/css">
 			#error{color:#dd4b39;}
@@ -271,13 +271,19 @@ function save()
 	$('#btnSave').text('保存中'); //change button text
 	$('#btnSave').attr('disabled',true); //set button disable
 	if(save_method=='add') 
+	{
+		data=$('#form').serialize();
 		url="<?php echo base_url();?>index.php/book/ajax_add_book";//call function ajax_add_role if add 
+	}
 	else if(save_method=='update')
+	{
+		data=$('#edit').serialize()
 		url="<?php echo base_url();?>index.php/book/ajax_update_book";
+	}
 	$.ajax({
         url:url,
         type:"POST",
-        data:$('#form').serialize(),
+        data:data,
         dataType:"JSON",
         success:function(data)
         {
