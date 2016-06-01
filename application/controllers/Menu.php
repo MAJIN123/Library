@@ -22,4 +22,11 @@ class Menu extends MY_Controller
 		//table data
 		$this->load->view('main',$data);
 	}
+	public function book_management()
+	{
+		$data['url']='book_management';
+		$data['title']='Book Management';
+		//table data
+		$this->load->view('main',$data);
+	}
 }

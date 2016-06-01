@@ -24,6 +24,19 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery 2.1.4 -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="<?php echo base_url();?>AdminLTE2/bootstrap/offline/ionicons-2.0.1/js/ionic.bundle.min.js"></script>-->
+    <!-- SlimScroll -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?php echo base_url();?>AdminLTE2/dist/js/demo.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <!-- Site wrapper -->
@@ -107,55 +120,47 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">菜单</li>
-            <li><a href="<?php echo site_url('menu/home_page') ?>"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li><a href="<?php echo site_url('menu/home_page') ?>"><i class="glyphicon glyphicon-home"></i> <span>首页</span></a></li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-files-o"></i>
+                <i class="glyphicon glyphicon-book"></i>
                 <span>借书</span>
                 <!--<span class="label label-primary pull-right">4</span>-->
               </a>
             </li>
             <li>
               <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-th"></i> <span>还书</span> 
+                <i class="glyphicon glyphicon-bookmark"></i> <span>还书</span> 
                 <!--<small class="label pull-right bg-green">Hot</small>-->
               </a>
             </li>
             <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-pie-chart"></i>
-                <span>入库</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-laptop"></i>
+              <a href="<?php echo site_url('menu/book_management') ?>">
+                <i class="glyphicon glyphicon-tasks"></i>
                 <span>图书管理</span>
-                <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
                 <i class="fa fa-edit"></i> <span>用户管理</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-table"></i> <span>借书记录</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class="glyphicon glyphicon-list"></i> <span>借书记录</span>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
             <li>
               <a href="<?php echo base_url();?>AdminLTE2/calendar.html">
-                <i class="fa fa-calendar"></i> <span>罚款规则</span>
+                <i class="glyphicon glyphicon-remove-sign"></i> <span>罚款规则</span>
                 <!--<small class="label pull-right bg-red">3</small>-->
               </a>
             </li>
             <li>
               <a href="<?php echo base_url();?>AdminLTE2/mailbox/mailbox.html">
-                <i class="fa fa-envelope"></i> <span>读者评论</span>
+                <i class="glyphicon glyphicon-comment"></i> <span>读者评论</span>
                 <!--<small class="label pull-right bg-yellow">12</small>-->
               </a>
             </li>
@@ -184,18 +189,6 @@
         <strong>Copyright &copy; 2014-2016 <a href="http://scst.suda.edu.cn">计算机科学与技术学院</a>.</strong> All rights reserved.
       </footer>
     </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.4 -->
-    <script src="<?php echo base_url();?>AdminLTE2/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="<?php echo base_url();?>AdminLTE2/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="<?php echo base_url();?>AdminLTE2/plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo base_url();?>AdminLTE2/dist/js/demo.js"></script>
+    
   </body>
 </html>
