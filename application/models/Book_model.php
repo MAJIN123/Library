@@ -78,7 +78,7 @@ class Book_model extends CI_Model
         $book=$this->get_bookdata_by_ISBN($data['ISBN']);
         $temp=$book->remaining_number-$book->collections+$data['collections'];
         if($data['collections']==0) 
-            $this->db->set('delete_time',date('Y-m-d'));
+            $this->db->set('delete_time',date('Y-m-d H:i:s'));
         $this->db->set('collections',$data['collections']);
         $this->db->set('remaining_number',$temp);
         $this->db->where('ISBN',$data['ISBN']);
@@ -96,7 +96,7 @@ class Book_model extends CI_Model
 	{
         $this->db->set('collections',0);
         $this->db->set('remaining_number',0);
-        $data=array('delete_time'=>date('Y-m-d'));
+        $data=array('delete_time'=>date('Y-m-d H:i:s'));
         $where=array('ISBN'=>$ISBN);
         $this->db->update('book',$data,$where);
 		return $this->db->affected_rows();

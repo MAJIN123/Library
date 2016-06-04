@@ -34,6 +34,15 @@
 				<label>出版社</label>
 				<input name="press" type="text" class="form-control" placeholder="出版社">
 			</div>
+			<div class="form-group">
+				<label>类别</label>
+				<select name="category" class="form-control">
+					<option value="">--选择类别--</option>
+					<?php foreach($book as $select):?>
+					<option value="<?php echo $select->category?>"><?php echo $select->category?></option>
+					<?php endforeach;?>
+				</select>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
@@ -125,10 +134,12 @@
 <!-- DataTables -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<<<<<<< Updated upstream
 <!--<script src="<?php echo base_url();?>AdminLTE2/plugins/bootstrap-spinner/jquery.spinner.min.js"></script>-->
+=======
+>>>>>>> Stashed changes
 <script>	
 var save_method;
-var table;
 $('#book_management').DataTable
 ({
 	processing:true,
@@ -153,6 +164,7 @@ function add_book()
 	$("#error").html(''); // reset error on modals
 	$('#form')[0].reset(); // reset form on modals
 	$('input').attr("readonly",false);
+	$('select').attr("disabled",false);
 	$("#btnSave").show();
 	$('#modal_form').modal('show'); // show bootstrap modal
 	$('.modal-title').text('添加图书'); // Set Title to Bootstrap modal title
@@ -163,9 +175,9 @@ function detailed_info(ISBN)
 	$("#error").html(''); // reset form on modals
 	$('#form')[0].reset();
 	$.ajax({
-	url : "<?php echo site_url('book/ajax_detailed_info/')?>/"+ISBN,
-	type: "GET",
-	dataType: "JSON",
+	url:"<?php echo site_url('book/ajax_detailed_info/')?>/"+ISBN,
+	type:"GET",
+	dataType:"JSON",
 	success:function(data)
 	{
 		$('[name="ISBN"]').val(data.ISBN);
@@ -176,6 +188,8 @@ function detailed_info(ISBN)
 		$('[name="author"]').attr("readonly",true);
 		$('[name="press"]').val(data.press);
 		$('[name="press"]').attr("readonly",true);
+		$('[name="category"]').val(data.category);
+		$('[name="category"]').attr("disabled",true);
 		$('#modal_form').modal('show'); // show bootstrap modal when complete loaded
 		$('.modal-title').text('详细信息'); // Set title to Bootstrap modal title
 	},
@@ -252,14 +266,14 @@ function delete_book(ISBN)
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('book/ajax_delete_book')?>/"+ISBN,
-            type: "POST",
-            dataType: "JSON",
-            success: function(data)
+            url:"<?php echo site_url('book/ajax_delete_book')?>/"+ISBN,
+            type:"POST",
+            dataType:"JSON",
+            success:function(data)
             {
 				location.reload();
             },
-            error: function (jqXHR, textStatus, errorThrown)
+            error:function (jqXHR, textStatus, errorThrown)
             {
                 alert('Error deleting data');
             }
@@ -273,7 +287,7 @@ function save()
 	if(save_method=='add') 
 	{
 		data=$('#form').serialize();
-		url="<?php echo base_url();?>index.php/book/ajax_add_book";//call function ajax_add_role if add 
+		url="<?php echo base_url();?>index.php/book/ajax_add_book";//call function ajax_add_book if add 
 	}
 	else if(save_method=='update')
 	{
@@ -288,21 +302,17 @@ function save()
         success:function(data)
         {
             if(data.status) //if success close modal and reload ajax table
-            {
-                //$('#add_user').modal('hide');
-                // reload_table();
 				location.reload();
-            }
             else
 				$("#error").html(data.error);
-            $('#btnSave').text('save'); //change button text
+            $('#btnSave').text('保存'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
  
         },
         error:function(jqXHR,textStatus,errorThrown)
         {
             alert('Error adding / editting data');
-            $('#btnSave').text('save'); //change button text
+            $('#btnSave').text('保存'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
         }
     });

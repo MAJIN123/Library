@@ -44,10 +44,12 @@ class Login_model extends CI_Model
         // to CodeIgniter, others are added.  See CodeIgniter's documentation for details.
         $data=array
         (
-            'id'=>$this->details->id,
+            'studentNumber'=>$this->details->student_number,
             'name'=>$this->details->name,
             'sex'=>$this->details->sex,
+            'major'=>$this->details->major,
             'permissionId'=>$this->details->permission_id,
+            'image'=>$this->details->image,
             'isLoggedIn'=>true
         );
         $this->session->set_userdata($data);

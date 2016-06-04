@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/bootstrap/offline/ionicons-2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -67,13 +66,21 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">    
+<<<<<<< Updated upstream
                   <img src="<?php echo base_url()."".$img;?>" class="user-image" alt="User Image">
+=======
+                  <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="user-image" alt="User Image">
+>>>>>>> Stashed changes
                   <span class="hidden-xs"><?php echo $this->session->userdata('name') ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
+<<<<<<< Updated upstream
                     <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
+=======
+                    <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
+>>>>>>> Stashed changes
                     <p>
                       <?php echo $this->session->userdata('name') ?>
                       <small><?php date_default_timezone_set('PRC');echo date("Y年m月d日 H:i:s") ?></small>
@@ -106,7 +113,11 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
+<<<<<<< Updated upstream
               <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
+=======
+              <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
+>>>>>>> Stashed changes
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('name') ?></p>
@@ -129,34 +140,34 @@
             <li><a href="<?php echo site_url('menu/home_page') ?>"><i class="glyphicon glyphicon-home"></i> <span>首页</span></a></li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="glyphicon glyphicon-book"></i>
+                <i class="glyphicon glyphicon-arrow-left"></i>
                 <span>借书</span>
                 <!--<span class="label label-primary pull-right">4</span>-->
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="glyphicon glyphicon-bookmark"></i> <span>还书</span> 
+                <i class="glyphicon glyphicon-arrow-right"></i> <span>还书</span> 
                 <!--<small class="label pull-right bg-green">Hot</small>-->
               </a>
             </li>
             <?php if($this->session->userdata('permissionId')==1): ?>
             <li class="treeview">
               <a href="<?php echo site_url('menu/book_management') ?>">
-                <i class="glyphicon glyphicon-tasks"></i>
+                <i class="glyphicon glyphicon-book"></i>
                 <span>图书管理</span>
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="fa fa-edit"></i> <span>用户管理</span>
+                <i class="glyphicon glyphicon-user"></i> <span>用户管理</span>
                 <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
             <?php endif ?>
             <li class="treeview">
               <a href="<?php echo site_url('menu') ?>">
-                <i class="glyphicon glyphicon-list"></i> <span>借书记录</span>
+                <i class="	glyphicon glyphicon-th"></i> <span>借书记录</span>
                 <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
@@ -167,7 +178,11 @@
               </a>
             </li>
             <li>
+<<<<<<< Updated upstream
               <a href="<?php echo site_url('menu') ?>">
+=======
+              <a href="<?php echo site_url('menu/comment') ?>">
+>>>>>>> Stashed changes
                 <i class="glyphicon glyphicon-comment"></i> <span>读者评论</span>
                 <!--<small class="label pull-right bg-yellow">12</small>-->
               </a>

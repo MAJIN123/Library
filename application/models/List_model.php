@@ -28,4 +28,9 @@ class List_model extends CI_Model
         // die();
         return $role_list;
     }
+    function category_list()
+    {
+        $query=$this->db->query("select distinct category from book;");
+        return $query->result();   
+    }
 }
