@@ -7,11 +7,7 @@
 </head>
 <body>
 
-<<<<<<< Updated upstream
-<div id="myCarousel" class="carousel slide right" style="width:256px;">
-=======
 <!--<div id="myCarousel" class="carousel slide" style="width:256px;">-->
->>>>>>> Stashed changes
    <!-- 轮播（Carousel）指标 -->
    <!--<ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

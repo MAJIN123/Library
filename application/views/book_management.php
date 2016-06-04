@@ -134,10 +134,6 @@
 <!-- DataTables -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<<<<<<< Updated upstream
-<!--<script src="<?php echo base_url();?>AdminLTE2/plugins/bootstrap-spinner/jquery.spinner.min.js"></script>-->
-=======
->>>>>>> Stashed changes
 <script>	
 var save_method;
 $('#book_management').DataTable

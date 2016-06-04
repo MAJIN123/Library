@@ -66,21 +66,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">    
-<<<<<<< Updated upstream
-                  <img src="<?php echo base_url()."".$img;?>" class="user-image" alt="User Image">
-=======
                   <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="user-image" alt="User Image">
->>>>>>> Stashed changes
                   <span class="hidden-xs"><?php echo $this->session->userdata('name') ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-<<<<<<< Updated upstream
-                    <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
-=======
                     <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
->>>>>>> Stashed changes
                     <p>
                       <?php echo $this->session->userdata('name') ?>
                       <small><?php date_default_timezone_set('PRC');echo date("Y年m月d日 H:i:s") ?></small>
@@ -113,11 +105,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-<<<<<<< Updated upstream
-              <img src="<?php echo base_url()."".$img;?>" class="img-circle" alt="User Image">
-=======
               <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
->>>>>>> Stashed changes
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('name') ?></p>
@@ -178,11 +166,7 @@
               </a>
             </li>
             <li>
-<<<<<<< Updated upstream
-              <a href="<?php echo site_url('menu') ?>">
-=======
               <a href="<?php echo site_url('menu/comment') ?>">
->>>>>>> Stashed changes
                 <i class="glyphicon glyphicon-comment"></i> <span>读者评论</span>
                 <!--<small class="label pull-right bg-yellow">12</small>-->
               </a>
