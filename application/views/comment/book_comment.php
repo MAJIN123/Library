@@ -48,10 +48,7 @@
       <div class="box box-primary">
         <div class="box-body box-profile">
           <p class="lead text-center">书籍信息</p>
-          <?php if($book->image!=null): ?>
-          <img class="profile-user-img img-responsive" src="<?php echo base_url()."".$book->image; ?>" alt="User profile picture">
-          <?php endif; ?>
-          <?php if($book->image==null)echo '<p class="text-center">暂无图片</p>'; ?>
+          <img class="profile-user-img img-responsive" src="<?php echo base_url()."".$book->book_image; ?>" alt="User profile picture">
           <p class="text-muted text-center"><?php echo $book->ISBN ?></p>
           
           <ul class="list-group list-group-unbordered">
@@ -197,12 +194,12 @@
         <div class="box box-widget">
           <div class='box-header with-border'>
             <div class='user-block'>
-              <img class='img-circle' src='<?php echo base_url()."".$info->image; ?>' alt='user image'>
+              <img class='img-circle' src='<?php echo base_url()."".$info->user_image; ?>' alt='user image'>
               <span class='username'>
                 <a href="#">
-                <?php if($info->is_anonymous)echo $info->name;else echo '匿名用户'; ?>
+                <?php if(!$info->is_anonymous)echo $info->name;else echo '匿名用户'; ?>
                 </a>
-                </span>
+              </span>
               <span class='description'>公开发表 - <?php echo $info->comment_time; ?></span>
             </div><!-- /.user-block -->
             <div class='box-tools'>
@@ -221,8 +218,6 @@
     </div><!-- /.col -->
   </div><!-- /.row -->
 
-<!-- iCheck 1.0.1 -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
 <!-- Slimscroll -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script>	

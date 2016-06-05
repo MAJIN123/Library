@@ -49,7 +49,7 @@ class Login_model extends CI_Model
             'sex'=>$this->details->sex,
             'major'=>$this->details->major,
             'permissionId'=>$this->details->permission_id,
-            'image'=>$this->details->image,
+            'userImage'=>$this->details->user_image,
             'isLoggedIn'=>true
         );
         $this->session->set_userdata($data);

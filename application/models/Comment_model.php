@@ -25,7 +25,14 @@ class Comment_model extends CI_Model
 	}
     function save($data)
 	{
-        $data['comment_time']=date('Y-m-d H:i:s');
+		$date=date('Y-m-d H:i:s');
+		$operation=array(
+            'student_number'=>$this->session->userdata('studentNumber'),
+            'note'=>'add_comment',
+            'operation_time'=>$date,
+            ); 
+        $this->db->insert('operation_log',$operation);
+        $data['comment_time']=$date;
         $this->db->insert('comment',$data);
 		return $this->db->insert_id();
 	}

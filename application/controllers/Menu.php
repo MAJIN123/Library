@@ -7,6 +7,7 @@ class Menu extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model('list_model');
+		$this->load->model('operation_model');
 	}
 	public function index()
 	{
@@ -26,7 +27,7 @@ class Menu extends MY_Controller
 	{
 		$data['url']='home_page';
 		$data['title']='Home Page';
-		//table data
+		$data['operation']=$this->operation_model->operation_list();//table data
 		$this->load->view('main',$data);
 	}
 	public function book_management()
@@ -40,8 +41,19 @@ class Menu extends MY_Controller
 	{
 		$data['url']='comment/comment';
 		$data['title']='Comment';
-		$data['userdata']=$this->list_model->book_list();
-		//table data
+		$data['userdata']=$this->list_model->book_list();//table data
+		$this->load->view('main',$data);
+	}
+	public function lend_book()
+	{
+		$data['url']='lend/lend';
+		$data['title']='Lend Book';
+		$this->load->view('main',$data);
+	}
+	public function return_book()
+	{
+		$data['url']='return_book';
+		$data['title']='Return Book';
 		$this->load->view('main',$data);
 	}
 }

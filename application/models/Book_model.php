@@ -63,26 +63,31 @@ class Book_model extends CI_Model
     function save($data)
 	{
         $book=$this->get_bookdata_by_ISBN($data['ISBN']);
+        $date=date('Y-m-d H:i:s');
+        $operation=array(
+            'student_number'=>$this->session->userdata('studentNumber'),
+            'note'=>'add_book',
+            'operation_time'=>$date,
+            ); 
+        $this->db->insert('operation_log',$operation);
         if($book==null) 
             $this->db->insert('book',$data);
         else
             $this->db->set('delete_time',null);
         $this->db->set('collections','collections+1',false);
         $this->db->set('remaining_number','remaining_number+1',false);
+        $this->db->set('latest_time',$date);
         $this->db->where('ISBN',$data['ISBN']);
         $this->db->update('book');
 		return $this->db->affected_rows();
 	}
     function update($data)
 	{
-        $book=$this->get_bookdata_by_ISBN($data['ISBN']);
-        $temp=$book->remaining_number-$book->collections+$data['collections'];
+        // $data['latest_time']=date('Y-m-d H:i:s');
         if($data['collections']==0) 
-            $this->db->set('delete_time',date('Y-m-d H:i:s'));
-        $this->db->set('collections',$data['collections']);
-        $this->db->set('remaining_number',$temp);
-        $this->db->where('ISBN',$data['ISBN']);
-        $this->db->update('book');
+            $data['delete_time']=date('Y-m-d H:i:s');
+        $where=array('ISBN'=>$data['ISBN']);
+        $this->db->update('book',$data,$where);
 		return $this->db->affected_rows();
 	}
     function get_bookdata_by_ISBN($ISBN)

@@ -24,13 +24,31 @@ class List_model extends CI_Model
                             ->where('delete_time=',NULL)
                             ->get()
                             ->result();
-		// var_dump($role_list);
-        // die();
         return $role_list;
     }
     function category_list()
     {
-        $query=$this->db->query("select distinct category from book;");
-        return $query->result();   
+        $category_list=$this->db->select('*')
+                                ->from('category')
+                                ->where('delete_time=',NULL)
+                                ->get()
+                                ->result();
+        return $category_list;   
     }
+    function operation_log_list()
+    {
+        $operation_log_list=$this->db->select('*')
+                                    ->from('operation_log')
+                                    ->get()
+                                    ->result();
+        return $operation_log_list;   
+    }
+    function get_userdata_by_student_number($student_number)
+	{
+        $query=$this->db->from('user')
+                        ->where('student_number',$student_number)
+                        ->where('delete_time=',NULL)
+                        ->get();
+        return $query->row();   
+	}
 }

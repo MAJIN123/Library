@@ -39,7 +39,7 @@
 				<select name="category" class="form-control">
 					<option value="">--选择类别--</option>
 					<?php foreach($book as $select):?>
-					<option value="<?php echo $select->category?>"><?php echo $select->category?></option>
+					<option value="<?php echo $select->category_name?>"><?php echo $select->category_name?></option>
 					<?php endforeach;?>
 				</select>
 			</div>
