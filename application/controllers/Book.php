@@ -51,7 +51,7 @@ class Book extends CI_Controller
                 'press'=>$this->input->post('press'), 
                 'category'=>$this->input->post('category')
 			); 
-		$affect=$this->book_model->save($data);
+		$affect=$this->book_model->save($data);//添加图书时更新时间
 		echo json_encode(array("status"=>TRUE));
     }
     private function _ajax_add_book_validate()
@@ -60,7 +60,7 @@ class Book extends CI_Controller
         $this->form_validation->set_rules('book_name','书名','required|callback_book_check[book_name]');
         $this->form_validation->set_rules('author','作者','required|callback_book_check[author]');
         $this->form_validation->set_rules('press','出版社','required|callback_book_check[press]');
-        $this->form_validation->set_rules('category','类别','required');
+        $this->form_validation->set_rules('category','类别','required|callback_book_check[category]');
 		if ($this->form_validation->run()==FALSE)
         {
             echo json_encode(array("error"=>validation_errors()));
@@ -93,11 +93,12 @@ class Book extends CI_Controller
     // }
     public function ajax_update_book()
     {
-        $data=array(
-            'ISBN'=>$this->input->post('ISBN'),
-            'collections'=>$this->input->post('collections')
-            ); 
-        $update=$this->book_model->update($data);
+        $data=array('ISBN'=>$this->input->post('ISBN'));
+        $book=$this->book_model->get_bookdata_by_ISBN($data['ISBN']);
+        $temp=$book->remaining_number-$book->collections+$data['collections'];
+        $data['remaining_number']=$temp;
+        $where=array('ISBN'=>$data['ISBN']);//指定条件元组更新
+        $update=$this->book_model->update($data,$where);
 		echo json_encode(array("status"=>TRUE));
     }
     public function ajax_delete_book($ISBN)

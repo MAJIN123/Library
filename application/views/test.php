@@ -126,3 +126,42 @@
     <script src="<?php echo base_url() ?>AdminLTE2/plugins/fastclick/fastclick.min.js"></script>
   </body>
 </html>
+
+<div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"></h4>
+      </div>
+	  <form class="form-horizontal" id="form" role="form" action="#">
+		<div class="modal-body">
+			<style type="text/css">
+			#error{color:red;}
+			</style>
+			<!--dirty-->
+			<div id="error"></div>
+			<!--dirty-->
+			<div class="form-group">
+				<label>原密码</label>
+				<input name="原密码" type="password" class="form-control" placeholder="原密码">
+			</div>
+			<div class="form-group">
+				<label>新密码</label>
+				<input name="新密码" type="password" class="form-control" placeholder="新密码">
+			</div>
+			<div class="form-group">
+				<label>确认密码</label>
+				<input name="确认密码" type="password" class="form-control" placeholder="确认密码">
+			</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
+		</div>
+	  </form>
+    </div>
+  </div>
+</div>
+
+
+

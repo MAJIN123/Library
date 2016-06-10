@@ -1,5 +1,4 @@
 <?php
-
 class Login_model extends CI_Model 
 {
 	var $details;
@@ -39,9 +38,6 @@ class Login_model extends CI_Model
 	}
     function set_session() 
     {
-        // session->set_userdata is a CodeIgniter function that
-        // stores data in CodeIgniter's session storage.  Some of the values are built in
-        // to CodeIgniter, others are added.  See CodeIgniter's documentation for details.
         $data=array
         (
             'studentNumber'=>$this->details->student_number,
@@ -49,9 +45,22 @@ class Login_model extends CI_Model
             'sex'=>$this->details->sex,
             'major'=>$this->details->major,
             'permissionId'=>$this->details->permission_id,
-            'image'=>$this->details->image,
+            'userImage'=>$this->details->user_image,
             'isLoggedIn'=>true
         );
         $this->session->set_userdata($data);
+    }
+    function check_owner() 
+    {
+        $user=$this->db->where('student_number',$this->session->userdata('studentNumber'))//camel拼法
+                        ->get('user')
+                        ->result();
+        if($user) 
+        {
+            $password=$user[0]->password;
+            return password_verify($this->input->post('old_password'),$password);
+        } 
+        else
+            return false;  
     }
 }

@@ -7,6 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/bootstrap/offline/font-awesome-4.4.0/css/font-awesome.min.css">
@@ -32,6 +33,8 @@
     <script src="<?php echo base_url();?>AdminLTE2/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo base_url();?>AdminLTE2/plugins/fastclick/fastclick.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -66,13 +69,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">    
-                  <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="user-image" alt="User Image">
+                  <img src="<?php echo base_url()."".$this->session->userdata('userImage');?>" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $this->session->userdata('name') ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url()."".$this->session->userdata('userImage');?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->userdata('name') ?>
                       <small><?php date_default_timezone_set('PRC');echo date("Y年m月d日 H:i:s") ?></small>
@@ -105,41 +108,31 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="<?php echo base_url()."".$this->session->userdata('image');?>" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url()."".$this->session->userdata('userImage');?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('name') ?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
-          <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-          <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">菜单</li>
             <li><a href="<?php echo site_url('menu/home_page') ?>"><i class="glyphicon glyphicon-home"></i> <span>首页</span></a></li>
+            <?php if($this->session->userdata('permissionId')==1): ?>
             <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
+              <a href="<?php echo site_url('menu/lend_book') ?>">
                 <i class="glyphicon glyphicon-arrow-left"></i>
                 <span>借书</span>
                 <!--<span class="label label-primary pull-right">4</span>-->
               </a>
             </li>
             <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
+              <a href="<?php echo site_url('menu/return_book') ?>">
                 <i class="glyphicon glyphicon-arrow-right"></i> <span>还书</span> 
                 <!--<small class="label pull-right bg-green">Hot</small>-->
               </a>
             </li>
-            <?php if($this->session->userdata('permissionId')==1): ?>
             <li class="treeview">
               <a href="<?php echo site_url('menu/book_management') ?>">
                 <i class="glyphicon glyphicon-book"></i>
@@ -147,22 +140,22 @@
               </a>
             </li>
             <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
+              <a href="<?php echo site_url('menu/user_management') ?>">
                 <i class="glyphicon glyphicon-user"></i> <span>用户管理</span>
                 <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
             <?php endif ?>
             <li class="treeview">
-              <a href="<?php echo site_url('menu') ?>">
-                <i class="	glyphicon glyphicon-th"></i> <span>借书记录</span>
+              <a href="<?php echo site_url('menu/personal_information') ?>">
+                <i class="glyphicon glyphicon-piggy-bank"></i> <span>个人信息</span>
                 <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
-            <li>
-              <a href="<?php echo site_url('menu') ?>">
-                <i class="glyphicon glyphicon-remove-sign"></i> <span>罚款规则</span>
-                <!--<small class="label pull-right bg-red">3</small>-->
+            <li class="treeview">
+              <a href="<?php echo site_url('menu/lend_record') ?>">
+                <i class="glyphicon glyphicon-th"></i> <span>借书记录</span>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
             </li>
             <li>

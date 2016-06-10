@@ -39,14 +39,14 @@
 				<select name="category" class="form-control">
 					<option value="">--选择类别--</option>
 					<?php foreach($book as $select):?>
-					<option value="<?php echo $select->category?>"><?php echo $select->category?></option>
+					<option value="<?php echo $select->category_name?>"><?php echo $select->category_name?></option>
 					<?php endforeach;?>
 				</select>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
 			<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
 		</div>
 	  </form>
     </div>
@@ -63,12 +63,6 @@
       </div>
 	  <form id="edit" role="form" action="#">
 		<div class="modal-body">
-			<style type="text/css">
-			#error{color:#dd4b39;}
-			</style>
-			<!--dirty-->
-			<div id="error"></div>
-			<!--dirty-->
 			<div class="form-group">
 				<label>ISBN</label>
 				<input name="ISBN" type="text" class="form-control" placeholder="ISBN">
@@ -92,8 +86,8 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
 			<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
 		</div>
 	  </form>
     </div>

@@ -21,6 +21,7 @@ class Comment extends CI_Controller
 		$data['url']='comment/book_comment';
 		$data['title']='Book Comment';
 		$data['book']=$this->book_model->get_bookdata_by_ISBN($ISBN);
+		$book_name=$data['book']->book_name;
 		$data['comment']=$this->comment_model->get_commentdata_by_ISBN($ISBN);
 		$data['my_comment']=$this->comment_model->appointed_commentdata($ISBN);
 		//table data
@@ -35,10 +36,6 @@ class Comment extends CI_Controller
 			'comment'=>$this->input->post('comment'),
 			'is_anonymous'=>$this->input->post('is_anonymous')?1:0,
 			); 
-		// echo "<script>alert('dfsf');</script>";
-		// echo json_encode(array("error"=>'is_anonymous为空!'));
-		// exit();
-        
 		$affect=$this->comment_model->save($data);
 		echo json_encode(array("status"=>TRUE));
 	}
