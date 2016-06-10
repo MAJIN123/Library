@@ -45,4 +45,12 @@ class List_model extends CI_Model
                                     ->result();
         return $operation_log_list;   
     }
+    function get_userdata_by_student_number($student_number)
+	{
+        $query=$this->db->from('user')
+                        ->where('student_number',$student_number)
+                        ->where('delete_time=',NULL)
+                        ->get();
+        return $query->row();   
+	}
 }

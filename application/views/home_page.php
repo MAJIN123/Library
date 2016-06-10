@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head></head>
+=======
+<head>
+    <link href="<?php echo base_url();?>AdminLTE2/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<?php echo base_url();?>AdminLTE2/scripts/jquery/2.0.0/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>AdminLTE2/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+>>>>>>> d95913ace9946f2f853e236ae6dc687893ad21f2
 <body>
 
 <!--<div id="myCarousel" class="carousel slide" style="width:256px;">-->
