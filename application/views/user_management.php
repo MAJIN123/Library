@@ -34,7 +34,7 @@
 				<input name="grade" type="text" class="form-control" placeholder="年级">
 			</div>
             <div class="form-group">
-				<label>学院</label>
+				<label>专业</label>
 				<input name="major" type="text" class="form-control" placeholder="学院">
 			</div>
             <div class="form-group">

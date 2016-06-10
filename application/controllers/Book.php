@@ -93,7 +93,7 @@ class Book extends CI_Controller
     // }
     public function ajax_update_book()
     {
-        $data=array('ISBN'=>$this->input->post('ISBN'));
+        $data=array('ISBN'=>$this->input->post('ISBN'),'collections'=>$this->input->post('collections'));
         $book=$this->book_model->get_bookdata_by_ISBN($data['ISBN']);
         $temp=$book->remaining_number-$book->collections+$data['collections'];
         $data['remaining_number']=$temp;
