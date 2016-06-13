@@ -10,7 +10,7 @@ class List_model extends CI_Model
 	{
         $user_list=$this->db->select('*')
                             ->from('user')
-                            ->where('delete_time =', NULL)
+                            ->where('delete_time =',NULL)
                             ->get()
                             ->result();
 		// var_dump($user_list);

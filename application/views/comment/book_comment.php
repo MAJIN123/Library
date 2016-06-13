@@ -18,16 +18,16 @@
 			<!--dirty-->
       <div class="form-group">
 				<label>ISBN</label>
-				<input name="ISBN" type="text" class="form-control" placeholder="ISBN">
+				<input name="ISBN" id="ISBN" type="text" class="form-control" placeholder="ISBN">
 			</div>
 			<div class='form-group'>
-        <input name="comment" type="text" class="form-control" placeholder="我的评论">                                      
+        <input name="comment" id="comment" type="text" class="form-control" placeholder="我的评论">                                      
       </div> 
       <div class="row">
         <div class="col-sm-8">
           <div class="checkbox icheck">
             <label>
-              <input name="is_anonymous" type="checkbox" class="flat-red"> 匿名
+              <input name="is_anonymous" id="is_anonymous" type="checkbox" class="flat-red"> 匿名
             </label>
           </div>
         </div><!-- /.col -->
@@ -82,7 +82,7 @@
                   echo $my_comment->comment;
                   echo '</br>';
                   echo '<a class="btn btn-sm btn-warning" href="javascript:void()" title="修改评论" onclick="edit_comment()"><i class="glyphicon glyphicon-pencil"></i>修改评论</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void()" title="删除评论" onclick="delete_comment()"><i class="glyphicon glyphicon-trash"></i>删除评论</a>';
+                        <a class="btn btn-sm btn-danger" href="javascript:void()" style="float:right" title="删除评论" onclick="delete_comment()"><i class="glyphicon glyphicon-trash"></i>删除评论</a>';//按钮居右
               }
               ?>
             </div>
@@ -235,7 +235,7 @@ function add_comment()
     $("#error").html(''); // reset error on modals
     $('#form')[0].reset(); // reset form on modals
     $('input').attr("readonly",false);
-    $('[name="ISBN"]').val('<?php echo $book->ISBN ?>');
+    $('[name="ISBN"]').val('<?php echo $book->ISBN; ?>');
     $('[name="ISBN"]').attr("readonly",true);
     $("#btnSave").show();
     $('#modal_comment').modal('show'); // show bootstrap modal
@@ -243,9 +243,36 @@ function add_comment()
 }
 function edit_comment()
 {
+    save_method='update';//和add类似，不过要删掉原评论
+    $("#error").html(''); // reset form on modals
+    $('#form')[0].reset();
+    $('input').attr("readonly",false);
+    $('[name="ISBN"]').val('<?php echo $book->ISBN; ?>');
+    $('[name="ISBN"]').attr("readonly",true);
+    $('[name="comment"]').val('<?php if($my_comment!=null)echo $my_comment->comment; ?>');//没有评论的时候$my_comment为空
+    $("#btnSave").show();
+    $('#modal_comment').modal('show'); // show bootstrap modal
+    $('.modal-title').text('<?php echo $book->book_name; ?>'); // Set Title to Bootstrap modal title
 }
 function delete_comment()
 {
+    if(confirm('确认删除该评论？'))
+    {
+        // ajax delete data to database
+        $.ajax({
+            url:"<?php echo site_url('comment/ajax_delete_comment')?>/"+'<?php echo $book->ISBN ?>',
+            type:"POST",
+            dataType:"JSON",
+            success:function(data)
+            {
+				        location.reload();
+            },
+            error:function(jqXHR,textStatus,errorThrown)
+            {
+                alert('Error deleting data');
+            }
+        });
+    }
 }
 function save() 
 {
@@ -253,6 +280,8 @@ function save()
     $('#btnSave').attr('disabled',true); //set button disable
     if(save_method=='add') 
       url="<?php echo site_url('comment/ajax_add_comment/')?>/"+'<?php echo $book->ISBN ?>';//call function ajax_add_book if add 
+    if(save_method=='update') 
+      url="<?php echo site_url('comment/ajax_update_comment/')?>/"+'<?php echo $book->ISBN ?>';//去掉''出错
     $.ajax
     ({
         url:url,

@@ -21,20 +21,20 @@ $(document).ready(function()
 		url:"<?php echo site_url('lend_book/lend_record_list')?>",
 		dataType:"json",
 		pagination:true,	
-        toolbar:"#toolbar",	// 添加自定义工具栏
-		search:true,	// 显示搜索框
-		showPaginationSwitch:true,	// 显示分页切换工具
-		showRefresh:true,	// 显示刷新工具
-		showToggle:true,	// 显示切换工具
-		showColumns:true,	// 显示列过滤器工具
-		pageSize:10,	// 初始每页显示条数
-		pageList:[10,25,50,100],	// 可选每页显示条数
+        toolbar:"#toolbar",//自定义工具栏
+		search:true,//搜索框
+		showPaginationSwitch:true,//分页切换工具
+		showRefresh:true,//刷新工具
+		showToggle:true,//切换工具
+		showColumns:true,//列过滤器工具
+		pageSize:10,//初始每页显示条数
+		pageList:[10,25,50,100],//可选每页显示条数
 		paginationPreText:"上一页",
 		paginationNextText:"下一页",
 		columns:[
         {
 			title:"书名",
-			field:"student_number",
+			field:"book_name",
 			align:"center",
 			valign:"middle",
 			sortable:true

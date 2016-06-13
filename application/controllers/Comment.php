@@ -48,4 +48,23 @@ class Comment extends CI_Controller
             exit();
         }
     }
+	public function ajax_update_comment($ISBN)
+    {
+		$data=array(
+			'comment'=>$this->input->post('comment'),
+			'is_anonymous'=>$this->input->post('is_anonymous')?1:0,
+			'comment_time'=>date('Y-m-d H:i:s')
+			); 
+		$where=array(
+			'student_number'=>$this->session->userdata('studentNumber'),
+			'ISBN'=>$ISBN,
+			);
+        $affect=$this->comment_model->update($data,$where);
+		echo json_encode(array("status"=>TRUE));
+	}
+	public function ajax_delete_comment($ISBN)//需要ISBN和学号双重指定唯一
+	{
+		$rows=$this->comment_model->delete_appointed_commentdata($ISBN);
+		echo json_encode(array("status"=>TRUE));
+	}
 }
