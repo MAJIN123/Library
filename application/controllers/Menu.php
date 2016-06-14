@@ -12,9 +12,9 @@ class Menu extends MY_Controller
 	}
 	public function index()
 	{
-		$data['url']='blank_page';
-		$data['title']='Blank Page';
-		//table data
+		$data['url']='home_page';
+		$data['title']='主页';
+		$data['operation']=$this->operation_model->operation_list();//table data
 		$this->load->view('main',$data);
 	}
 	public function test()

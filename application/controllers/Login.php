@@ -21,7 +21,6 @@ class Login extends CI_Controller
             $this->load->view('login',$data);
         }
     }
-
     public function login()
     {
         $this->form_validation->set_rules('username',"用户名",'required');
