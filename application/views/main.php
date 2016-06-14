@@ -88,9 +88,9 @@
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <!--<div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>-->
+                    <div class="pull-left">
+                      <a href="<?php echo site_url('menu/personal_information') ?>" class="btn btn-default btn-flat">个人信息</a>
+                    </div>
                     <div class="pull-right">
                       <a href="<?php echo site_url('login/login_out') ?>" class="btn btn-default btn-flat">登出</a>
                     </div>
