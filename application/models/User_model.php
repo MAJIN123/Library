@@ -66,9 +66,11 @@ class User_model extends CI_Model
         if($user==null) 
             $this->db->insert('user',$data);
         else
-            $this->db->set('delete_time',null);
-        $this->db->where('student_number',$data['student_number']);
-        $this->db->update('user');
+        {
+            $data['delete_time']=null;
+            $where=array('student_number'=>$data['student_number']);
+            $this->db->update('user',$data,$where);
+        }        
 		return $this->db->affected_rows();
 	}
     function update($data,$where)

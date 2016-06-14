@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Library Management System | Log in</title>
+    <title>图书馆管理系统 | 登入</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -62,7 +62,7 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">登 入</button>
             </div><!-- /.col -->
           </div>
         </form>

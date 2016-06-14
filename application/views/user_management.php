@@ -27,19 +27,46 @@
 			</div>
 			<div class="form-group">
 				<label>权限</label>
-				<input name="permission_id" type="text" class="form-control" placeholder="0-普通用户 1-管理员">
+				<select name="permission_id" id="permission_id" class="form-control">
+					<option value="">--选择权限--</option>
+					<?php foreach($permission as $select): ?>
+					<option value="<?php echo $select->permission_id; ?>"><?php echo $select->permission; ?></option>
+					<?php endforeach;?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>性别</label>
+				<div class="radio icheck" id="sex" name="sex">
+					<label>
+						<input type="radio" name="sex" value="男" id="male" class="minimal"> 男  
+					</label>
+					<label>
+						<input type="radio" name="sex" value="女" id="female" class="minimal"> 女 
+					</label>	
+				</div>	
+				<input type="text" class="form-control" name="sex" id="sexText" style="display: none" readonly>
 			</div>
 			<div class="form-group">
 				<label>年级</label>
-				<input name="grade" type="text" class="form-control" placeholder="年级">
+				<select name="grade" id="grade" class="form-control">
+					<option value="">--选择年级--</option>
+					<?php foreach($grade as $select): ?>
+					<option value="<?php echo $select->grade; ?>"><?php echo $select->grade; ?></option>
+					<?php endforeach;?>
+				</select>
 			</div>
             <div class="form-group">
 				<label>专业</label>
-				<input name="major" type="text" class="form-control" placeholder="学院">
+				<select name="major" id="major" class="form-control">
+					<option value="">--选择专业--</option>
+					<?php foreach($major as $select): ?>
+					<option value="<?php echo $select->major; ?>"><?php echo $select->major; ?></option>
+					<?php endforeach;?>
+				</select>
 			</div>
-            <div class="form-group">
-				<label>性别</label>
-				<input name="sex" type="text" class="form-control" placeholder="性别">
+			<div class="form-group">
+				<label>余额</label>
+				<input name="account_balance" type="text" class="form-control" placeholder="余额">
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -51,75 +78,6 @@
   </div>
 </div>
 <!--添加信息的modal-->
-
-
-
-<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<!--modal-sm and modal-lg	-->
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel"></h4>
-      </div>
-	  <form id="edit" role="form" action="#">
-		<div class="modal-body">
-			<style type="text/css">
-			#error{color:#dd4b39;}
-			</style>
-			<!--dirty-->
-			<div id="error"></div>
-			<!--dirty-->
-			<div class="form-group">
-				<label>学号</label>
-				<input name="student_number" type="text" class="form-control" placeholder="学号">
-			</div>
-			<div class="form-group">
-				<label>姓名</label>
-				<input name="name" type="text" class="form-control" placeholder="姓名">
-			</div>
-			<!--<div class="form-group">
-				<label>权限</label>
-				<span class="tb-stock" id="J_Stock">
-				<input name="permission_id" style="width:70px;height:34px;text-align:center" class="tb-text" maxlength="10"  placeholder="权限"> 0-普通用户 1-管理员
-				</span>
-            </div>
-            -->
-            
-                <!--style="width:70px;height:34px;text-align:center" class="tb-text" maxlength="8"-->
-				<!--<div class="input-group spinner" data-trigger="spinner" id="spinner">
-					<input type="text" class="form-control" value="1" data-max="10" data-min="1" data-step="1">
-					<div class="input-group-addon">
-						<a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-						<a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-					</div>
-				</div>-->
-                
-                      
-            <div class="radio">
-			<label>
-			<input type="radio" name="permission_id" id="J_Stock2" 
-				value="0">
-				普通用户
-            </label>
-            <label>
-            <input type="radio" name="permission_id" id="J_Stock1" 
-                    value="1" checked> 管理员
-            </label>
-            </div>
-            <div class="radio">
-            </div>               
-                
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
-			<button id="btnSave" type="submit" class="btn btn-primary" onclick="save()">保存</button>
-		</div>
-	  </form>
-    </div>
-  </div>
-</div>
-<!--显示的modal-->
 
 <div class="box">
 	<div class="box-header">
@@ -175,47 +133,24 @@ $('#user_management').DataTable
         },
     ],
 });
+$('input[type="radio"].minimal').iCheck({radioClass: 'iradio_minimal-blue'});
 function add_user()
 {
 	save_method='add';
 	$("#error").html(''); // reset error on modals
 	$('#form')[0].reset(); // reset form on modals
 	$('input').attr("readonly",false);
+	$("#male").removeAttr("disabled");
+	$("#female").removeAttr("disabled");
+	$('#sexText').hide();
+	$('#sex').show();
+	$('input[type="radio"].minimal').iCheck({radioClass:'iradio_minimal-blue'});
+	$("#grade").removeAttr("disabled");
+	$("#major").removeAttr("disabled");
+	$("#permission_id").removeAttr("disabled");
 	$("#btnSave").show();
 	$('#modal_form').modal('show'); // show bootstrap modal
 	$('.modal-title').text('添加用户'); // Set Title to Bootstrap modal title
-}
-function detailed_info(student_number)
-{
-	$("#btnSave").hide();
-	$("#error").html(''); // reset form on modals
-	$('#form')[0].reset();
-	$.ajax({
-	url : "<?php echo site_url('user/ajax_detailed_info/')?>/"+student_number,
-	type: "GET",
-	dataType: "JSON",
-	success:function(data)
-	{
-		$('[name="student_number"]').val(data.student_number);
-		$('[name="student_number"]').attr("readonly",true);
-		$('[name="name"]').val(data.name);
-		$('[name="name"]').attr("readonly",true);
-		$('[name="permission_id"]').val(data.permission_id);
-		$('[name="permission_id"]').attr("readonly",true);
-        $('[name="grade"]').val(data.grade);
-		$('[name="grade"]').attr("readonly",true);	
-        $('[name="major"]').val(data.major);
-		$('[name="major"]').attr("readonly",true);
-		$('[name="sex"]').val(data.sex);
-		$('[name="sex"]').attr("readonly",true);
-		$('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-		$('.modal-title').text('详细信息'); // Set title to Bootstrap modal title
-	},
-	error:function(jqXHR,textStatus,errorThrown)
-	{
-		alert('Error get data from ajax');
-	}
-	});
 }
 function edit_user(student_number)
 {
@@ -223,24 +158,33 @@ function edit_user(student_number)
 	$("#error").html(''); // reset form on modals
 	$('#form')[0].reset();
 	$.ajax({
-	url : "<?php echo site_url('user/ajax_detailed_info/')?>/"+student_number,
-	type: "GET",
-	dataType: "JSON",
-	success:function(data)
-	{
-
-		$('[name="student_number"]').val(data.student_number);
-		$('[name="student_number"]').attr("readonly",true);
-        $('[name="name"]').val(data.name);
-	    $('[name="name"]').attr("readonly",true);
-        $("input[name='permission_id']:checked").val();
-		$('#modal_edit').modal('show'); // show bootstrap modal when complete loaded
-		$('.modal-title').text('修改信息'); // Set title to Bootstrap modal title
-	},
-	error:function(jqXHR,textStatus,errorThrown)
-	{
-		alert('Error get data from ajax');
-	}
+		url : "<?php echo site_url('user/ajax_detailed_info/')?>/"+student_number,
+		type: "GET",
+		dataType: "JSON",
+		success:function(data)
+		{
+			$('[name="student_number"]').val(data.student_number);
+			$('[name="student_number"]').attr("readonly",true);
+			$('[name="name"]').val(data.name);
+			$('[name="name"]').attr("readonly",true);
+			$('#sexText').show();
+			$('#sexText').val(data.sex);
+			$('#sexText').attr("readonly",true);
+			$('#sex').hide();
+			// alert(data.sex);
+			// $("input:radio[name='sex'][value='"+data.sex +"']").prop('checked',true);
+			$('[name="grade"]').val(data.grade);
+			$('[name="major"]').val(data.major);
+			$('[name="permission_id"]').val(data.permission_id);
+			$('[name="permission_id"]').attr("disabled",true);
+			$('[name="account_balance"]').val(data.account_balance);
+			$('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+			$('.modal-title').text('修改信息'); // Set title to Bootstrap modal title
+		},
+		error:function(jqXHR,textStatus,errorThrown)
+		{
+			alert('Error get data from ajax');
+		}
 	});
 }
 function delete_user(student_number)
@@ -267,16 +211,11 @@ function save()
 {
 	$('#btnSave').text('保存中'); //change button text
 	$('#btnSave').attr('disabled',true); //set button disable
+	data=$('#form').serialize();
 	if(save_method=='add') 
-	{
-		data=$('#form').serialize();
 		url="<?php echo base_url();?>index.php/user/ajax_add_user";//call function ajax_add_role if add 
-	}
 	else if(save_method=='update')
-	{
-		data=$('#edit').serialize()
-		url="<?php echo base_url();?>index.php/user/ajax_update_user";
-	}
+		url="<?php echo base_url();?>index.php/user/update_personal_info";
 	$.ajax({
         url:url,
         type:"POST",
@@ -286,12 +225,12 @@ function save()
         {
             if(data.status) //if success close modal and reload ajax table
             {
-                //$('#add_user').modal('hide');
-                // reload_table();
 				location.reload();
             }
             else
+			{
 				$("#error").html(data.error);
+			}
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
  

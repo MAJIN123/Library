@@ -28,6 +28,15 @@ class List_model extends CI_Model
         // var_dump($book_list);
         // die();
     }
+    function permission_list()
+    {
+        $permission_list=$this->db->select('*')
+                                    ->from('permission')
+                                    ->where('delete_time=',NULL)
+                                    ->get()
+                                    ->result();
+        return $permission_list;   
+    }
     function category_list()
     {
         $category_list=$this->db->select('*')

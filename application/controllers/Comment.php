@@ -19,7 +19,7 @@ class Comment extends CI_Controller
     public function book_comment($ISBN)
 	{
 		$data['url']='comment/book_comment';
-		$data['title']='Book Comment';
+		$data['title']='图书评论';
 		$data['book']=$this->book_model->get_bookdata_by_ISBN($ISBN);
 		$book_name=$data['book']->book_name;
 		$data['comment']=$this->comment_model->get_commentdata_by_ISBN($ISBN);

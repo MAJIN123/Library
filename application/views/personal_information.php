@@ -1,6 +1,3 @@
-<!-- iCheck for radio inputs -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>AdminLTE2/plugins/iCheck/all.css">
-
 <div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -104,7 +101,7 @@
 						<div class="form-group">
 							<label class="col-lg-4 control-label">余额：</label>
 							<div class="col-lg-3">
-								<input type="text" class="form-control" name="account_balance" id="account_balance" value="￥ <?php echo $userdata->account_balance; ?>" readonly />
+								<input type="text" class="form-control" name="account_balance" id="account_balance" value="<?php echo $userdata->account_balance; ?>" readonly />
 							</div>
 						</div>
 						<br />
@@ -130,14 +127,14 @@ var save_method;
 $(function() 
 {
 	$('input:radio[name="sex"][value="<?php echo $userdata->sex; ?>"]').prop('checked',true);
-	$('input[type="radio"].minimal').iCheck({radioClass: 'iradio_minimal-blue'});
+	$('input[type="radio"].minimal').iCheck({radioClass:'iradio_minimal-blue'});
 	$("#btnEdit").click(
 		function()
 		{
 			$("#name").removeAttr("readonly");
 			$("#male").removeAttr("disabled");
 			$("#female").removeAttr("disabled");
-			$('input[type="radio"].minimal').iCheck({radioClass: 'iradio_minimal-blue'});
+			$('input[type="radio"].minimal').iCheck({radioClass:'iradio_minimal-blue'});
 			$("#grade").show();
 			$("#gradeText").hide();
 			$("#grade").val("<?php echo $userdata->grade; ?>");
