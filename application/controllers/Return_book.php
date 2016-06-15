@@ -111,7 +111,15 @@ class Return_book extends MY_Controller
         }
         foreach($lend_record as $lend_record)
             if($lend_record->student_number==$this->input->post('student_number'))
-                return true;
+            {
+                if($lend_record->return_time!=null)
+                {
+                    $this->form_validation->set_message('lend_check','该书已被归还');
+                    return false;
+                }
+                else
+                    return true;
+            }
         $this->form_validation->set_message('lend_check','没有该借书记录');
         return false;
     }
