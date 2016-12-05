@@ -20,13 +20,13 @@
 
 // ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //
 /** WordPress数据库的名称 */
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', 'wordpress');
 
 /** MySQL数据库用户名 */
-define('DB_USER', 'username_here');
+define('DB_USER', 'root');
 
 /** MySQL数据库密码 */
-define('DB_PASSWORD', 'password_here');
+define('DB_PASSWORD', '1111');
 
 /** MySQL主机 */
 define('DB_HOST', 'localhost');
@@ -47,14 +47,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define('AUTH_KEY',         'majin1');
+define('SECURE_AUTH_KEY',  'majin2');
+define('LOGGED_IN_KEY',    'majin3');
+define('NONCE_KEY',        'majin4');
+define('AUTH_SALT',        'majin5');
+define('SECURE_AUTH_SALT', 'majin6');
+define('LOGGED_IN_SALT',   'majin7');
+define('NONCE_SALT',       'majin8');
 
 /**#@-*/
 
@@ -90,7 +90,7 @@ define('WP_ZH_CN_ICP_NUM', true);
 
 /** WordPress目录的绝对路径。 */
 if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
+	define('ABSPATH', dirname(__FILE__) . '/var/www/html/Library/wordpress');
 
 /** 设置WordPress变量和包含文件。 */
 require_once(ABSPATH . 'wp-settings.php');
